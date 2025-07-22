@@ -3,22 +3,16 @@
 **OBJECTIVE**
 
 Write Verilog code for a 32-bit ALU supporting:
-
 4 logical operations: AND, OR, NAND, NOR
-
 4 arithmetic operations: ADD, SUB, MUL, etc.
-
 Model ALU behavior using:
-
 case statement
-
 if statement
 
 Verify functionality using a testbench
 
 Synthesize both versions and compare results
 
-Identify critical path, area, power, and timing
 
 **DESCRIPTION**
 
@@ -28,5 +22,7 @@ given in 32 bit we get 32 bit output. The arithmetic will show only one output a
 selector is necessary to select one of the operator.
 
 **OUTPUT WAVEFORM**
+
+<img width="604" height="209" alt="Image" src="https://github.com/user-attachments/assets/a564f7f9-f8e3-4360-bcc6-16f8a7350055" />
 
 **SYNTHESIS RTL SCHEMATIC**
