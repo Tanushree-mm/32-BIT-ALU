@@ -26,3 +26,5 @@ selector is necessary to select one of the operator.
 <img width="604" height="209" alt="Image" src="https://github.com/user-attachments/assets/a564f7f9-f8e3-4360-bcc6-16f8a7350055" />
 
 **SYNTHESIS RTL SCHEMATIC**
+
+<img width="465" height="319" alt="Image" src="https://github.com/user-attachments/assets/2acc30ea-7158-4a81-989f-4eb4c05a1365" />
