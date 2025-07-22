@@ -1,0 +1,91 @@
+
+ **Files to Create:**
+
+1. `alu_32bit_case.v` – ALU using `case`
+2. `alu_32bit_if.v` – ALU using `if`
+3. `alu_32bit_tb_case.v` – Testbench for case
+4. `alu_32bit_tb_if.v` – Testbench for if
+5. `constraints_top.sdc` – SDC constraint file
+
+---
+
+ **Terminal Procedure**
+
+---
+
+ **A) Functional Simulation**
+
+1. **Launch Cadence Tools**
+
+```bash
+csh
+source /home/install/cshrc
+```
+
+ 2. **Create Source Files**
+
+```bash
+gedit alu_32bit_case.v
+gedit alu_32bit_if.v
+gedit alu_32bit_tb_case.v
+gedit alu_32bit_tb_if.v
+```
+
+ 3. **Start Simulation Tool**
+
+```bash
+nclaunch -new &
+```
+
+ 4. **Compile and Simulate**
+
+```bash
+ncverilog +access+rwc alu_32bit_case.v alu_32bit_tb_case.v
+# or
+ncverilog +access+rwc alu_32bit_if.v alu_32bit_tb_if.v
+```
+
+---
+
+ **B) Synthesis Using Genus**
+
+ 1. **Launch Genus**
+
+```bash
+genus -gui
+```
+ 2. **Create SDC File**
+
+```bash
+gedit constraints_top.sdc
+```
+
+📌 Example SDC:
+
+```tcl
+create_clock -name clk -period 10 [get_ports clk]
+set_input_delay 2.5 -clock clk [all_inputs]
+set_output_delay 2.5 -clock clk [all_outputs]
+```
+
+ 3. **Run Synthesis Commands** (Choose either case or if version):
+
+```tcl
+read_libs /home/install/FOUNDRY/digital/90nm/dig/lib/slow.lib
+read_hdl alu_32bit_case.v     ;# or alu_32bit_if.v
+elaborate
+read_sdc constraints_top.sdc
+set_db syn_generic_effort medium
+set_db syn_map_effort medium
+set_db syn_opt_effort medium
+syn_generic
+syn_map
+syn_opt
+report_timing > alu_timing.rep
+report_area > alu_area.rep
+report_power > alu_power.rep
+write_hdl > alu_netlist.v
+write_sdc > alu_output.sdc
+```
+
+
